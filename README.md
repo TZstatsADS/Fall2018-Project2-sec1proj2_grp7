@@ -8,7 +8,7 @@
 
 ## Project Title "Foodies Safeguard in NYC"
 Term: Fall 2018
-#################################################
+
 Final Version: [Project 2 by Group 7](https://mc4398.shinyapps.io/proj/)
 
 + Team #07
