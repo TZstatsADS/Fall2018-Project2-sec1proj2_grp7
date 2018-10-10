@@ -22,6 +22,7 @@ Final Version: [Project 2 by Group 7](https://mc4398.shinyapps.io/proj/)
 This project mainly focuses on the relation between crimes and restaurants of year 2018 happened in the new yrok city. Our shiny app is desiged to help people find the safest place to eat. And We tried to provide new visitors who want to have tasty food but also have concerns about safety with some suggestions.
 
 
+
  + Overall crime trend, pattern that crime happened, and crime types difference in each boroughs, and offense level.
  + Which nieghborhood is dangerous? How many crime happened in each neighborhood?
  + Which restaurant to eat when considering price and rating, date, time, and borough?
