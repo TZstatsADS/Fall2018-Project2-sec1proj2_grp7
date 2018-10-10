@@ -1,0 +1,12 @@
+name: Foodie
+title: Foodie
+username:
+account: mc4398
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 505880
+bundleId: 1635633
+url: https://mc4398.shinyapps.io/Foodie/
+when: 1539209817.61308
+asMultiple: FALSE
+asStatic: FALSE
