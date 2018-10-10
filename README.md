@@ -1,8 +1,8 @@
-# Project 2: Open Data App - an RShiny app development project
+# Project 2: Open Data App - an RShiny app development project - A Safeguard for Foodie to Explore Gourmet in NYC
 
 ### [Project Description](/project2_desc.md)
 
-![screenshot](doc/figs/Homepage.jpg)
+![screenshot](doc/figs/Homepage.png)
 
 
 
@@ -11,7 +11,7 @@ Term: Fall 2018
 #################################################
 Final Version: [Project 2 by Group 7](https://xinrouli.shinyapps.io/where_to_party2/)
 
-+ Team #02
++ Team #07
 
  + team member 1: Mengqi Chen
  + team member 2: Shiqing Long
@@ -21,10 +21,11 @@ Final Version: [Project 2 by Group 7](https://xinrouli.shinyapps.io/where_to_par
 + **Project summary**: 
 This project mainly focuses on the relation between crimes and restaurants of year 2018 happened in the new yrok city. Our shiny app is desiged to help people find the safest place to eat. And We tried to provide new visitors who want to have tasty food but also have concerns about safety with some suggestions
 ###################################################
-(1) The crime frequency of each neighborhood?
-(2) Where are the locations that fewer crimes will affect the parties?
-(3) For an exact zipcode location and time date, how many parties and crimes happped there during year 2017?
-(4) For some fixed party types, where were they held during year 2017?
+(1)Overall crime trend, pattern that crime happened, and crime types difference in each boroughs, and offense level.
+(2)Which nieghborhood is dangerous? How many crime happened in each neighborhood?
+(3)Which restaurant to eat when considering price and rating, date, time, and borough?
+(4)For a selected restaurants, how many crimes happped there during period of Jan,2018 to March,2018?
+(5) What is the nearest NYPD station to ask for help?
 
 We visualize the information about restaurants and crimes using geograph, time series plot, animated bar chart and animated scatter plot using ploty package.
 And we visualize the combination of the information about restaurants and crimes on NYC map using leaflet package.
