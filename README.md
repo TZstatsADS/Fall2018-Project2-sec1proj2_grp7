@@ -30,7 +30,6 @@ This project mainly focuses on the relation between crimes and restaurants of ye
 
 We visualize the information about restaurants and crimes using geograph, time series plot, animated bar chart and animated scatter plot using ploty package.
 And we visualize the combination of the information about restaurants and crimes on NYC map using leaflet package.
-##############################################
 ![screenshot](doc/screenshot1.png)
 
 
@@ -38,8 +37,6 @@ Our Target Users:
 1. Travellers who are new to a place and want to have something to eat
 2. Restaurants Owner who want to relocate
 3. NYPD
-###############################################
-![screenshot](doc/screenshot3.jpeg)
 
 In this second project of GR5243 Applied Data Science, we develop an *Exploratory Data Analysis and Visualization* shiny app on a topic of foodies safeguard using NYC crime data released on the [The Official Website of the City of New York
 NYC](https://www1.nyc.gov) and [NYC Open Data] website (https://opendata.cityofnewyork.us). See [Project 2 Description](doc/project2_desc.md) for more details.  
