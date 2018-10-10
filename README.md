@@ -55,7 +55,8 @@ Mengqi Chen: Processed yelp data and crime data. Transfer numeric data into geom
 
 Shiqing Long: Cleaned Crime data, Exploratory Data Analysis using package "Plotly", plotted time series plot with range slider and selector buttons, animated scatter plot with mulitple trace, interactive heatmap and animated barchart and summurized business insights. Merged, processed restaurant data to compute the number of crimes around a given restaurants. Added pictures to modify project. Wrote github readme file.
 
-Anke Xu: Constructed the framework of the shinyapp, including the basic ui and server system. Enabled the yelp data, crime data and police station data reactive. Design the ui part, choosing the colors, font styles and the layout. Debugged and improved the shinyapp. Provided ideas to the storytelling and discovered the business insights of the NYC map and each figure.  
+Anke Xu: Constructed the framework of the shinyapp, including the basic ui and server system. Enabled the yelp data, crime data and police station data reactive. Design the ui part, choosing the colors, font styles and the layout. Debugged and improved the shinyapp. Provided ideas to the storytelling and discovered the business insights of the NYC map and each figure.
+
 Sen Fu: Wrote the police station layer, including data collecting, data processing, points plotting and label adding. Design the algorithm of how to calculate the crime in half a mile circle of each restaurant. Beautify the ui system, such as changing the font styles and colors using CSS and R. 
 
 All team members contributed equally in all stages of this project. All team members approve our work presented in this GitHub repository including this contributions statement.
