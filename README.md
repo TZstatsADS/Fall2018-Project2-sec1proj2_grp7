@@ -1,4 +1,4 @@
-# Project 2: Open Data App - an RShiny app development project - A Safeguard for Foodie to Explore Gourmet in NYC
+# Project 2: Open Data App - an RShiny app development project - Foodie Safeguard
 
 ### [Project Description](/project2_desc.md)
 
@@ -6,7 +6,7 @@
 
 
 
-## Project Title "Foodie Safeguard"
+## Project Title "A Safeguard for Foodie to Explore Gourmet in NYC"
 Term: Fall 2018
 #################################################
 Final Version: [Project 2 by Group 7](https://xinrouli.shinyapps.io/where_to_party2/)
@@ -22,11 +22,11 @@ Final Version: [Project 2 by Group 7](https://xinrouli.shinyapps.io/where_to_par
 This project mainly focuses on the relation between crimes and restaurants of year 2018 happened in the new yrok city. Our shiny app is desiged to help people find the safest place to eat. And We tried to provide new visitors who want to have tasty food but also have concerns about safety with some suggestions
 
 ###################################################
- + (1)Overall crime trend, pattern that crime happened, and crime types difference in each boroughs, and offense level.
- + (2)Which nieghborhood is dangerous? How many crime happened in each neighborhood?
- + (3)Which restaurant to eat when considering price and rating, date, time, and borough?
- + (4)For a selected restaurants, how many crimes happped there during period of Jan,2018 to March,2018?
- + (5) What is the nearest NYPD station to ask for help?
+ + Overall crime trend, pattern that crime happened, and crime types difference in each boroughs, and offense level.
+ + Which nieghborhood is dangerous? How many crime happened in each neighborhood?
+ + Which restaurant to eat when considering price and rating, date, time, and borough?
+ + For a selected restaurants, how many crimes happped there during period of Jan,2018 to March,2018?
+ + What is the nearest NYPD station to ask for help?
 
 We visualize the information about restaurants and crimes using geograph, time series plot, animated bar chart and animated scatter plot using ploty package.
 And we visualize the combination of the information about restaurants and crimes on NYC map using leaflet package.
