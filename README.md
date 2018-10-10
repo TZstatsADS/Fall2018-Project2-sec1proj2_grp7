@@ -1,4 +1,4 @@
-# Project 2: Open Data App - an RShiny app development project - Foodie Safeguard
+# Project 2: Open Data App - an RShiny app development project - Foodies Safeguard
 
 ### [Project Description](/project2_desc.md)
 
