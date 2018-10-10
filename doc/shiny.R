@@ -371,11 +371,11 @@ server <- function(input, output){
       #the crime map
       addPolygons(data = df(), fillOpacity = 0.8, fillColor = ~qpal(num_points), weight = 0.5,
                   popup = crime_popup, group = "Crime") %>%
-      # addLegend(data = df(),"bottomright", pal = pal, values = ~num_points,
-      #           title = "Crime Counts",
-      #           labFormat = labelFormat(),
-      #           opacity = 1, group = "Crime"
-      # )%>%
+       addLegend(data = df(),"bottomright", pal = pal, values = ~num_points,
+                 title = "Crime Counts",
+                labFormat = labelFormat(),
+                 opacity = 1, group = "Crime"
+       )%>%
       addLayersControl(
         overlayGroups = c("Crime","Restaurants", "Police Stations"),
         options = layersControlOptions(collapsed = FALSE)
