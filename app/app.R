@@ -2,7 +2,7 @@
 ############################ Final Version #####################
 
 packages <- c("RColorBrewer", "wordcloud", "ggplot2", "ggmap", "dplyr", "shiny",
-              "lubridate", "maps", "mapproj",  "shinythemes","leaflet","rgdal","tigris","ggraph","gapminder","shinyWidgets")
+              "lubridate", "maps", "mapproj",  "shinythemes","leaflet","rgdal","tigris","ggraph")
 
 # # check packages that need to be installed.
 packages.needed=setdiff(packages,
@@ -14,7 +14,6 @@ if(length(packages.needed)>0){
 }
 
 library(devtools)
-
 
 library(RColorBrewer)
 library(bitops)
@@ -37,7 +36,7 @@ library(RCurl)
 library(httr)
 
 ############################# Data Process #############################
-ori_data <- read.csv("../data/NYPD_Complaint_Data_Current_YTD.csv")
+ori_data <- read.csv("NYPD_Complaint_Data_Current_YTD.csv")
 
 ori_data$CMPLNT_DHM <- paste(ori_data$CMPLNT_FR_DT,ori_data$CMPLNT_FR_TM)
 ori_data$CMPLNT_DHM <- mdy_hms(ori_data$CMPLNT_DHM)
@@ -105,14 +104,15 @@ leaflet(nyc_neighborhoods) %>%
   addProviderTiles("CartoDB.Positron")
 
 # read yelp data
-yelp_data <- read.csv("../data/yelp_data.csv", header = T, stringsAsFactors = F)
+yelp_data <- read.csv("yelp_data.csv", header = T, stringsAsFactors = F)
 
-res_crime_count <- read.csv("../data/rescount18.csv", stringsAsFactors = F)
+res_crime_count <- read.csv("rescount18.csv", stringsAsFactors = F)
 yelp_data$res_crime_count <- res_crime_count$counts
 
 yelp_data$rating <- as.character(yelp_data$rating)
 yelp_data <- yelp_data[which(yelp_data$rating %in% c("1","2","3","3.5","4","4.5","5")),]
 yelp_data$rating <- as.numeric(yelp_data$rating)
+yelp_data <- yelp_data[!is.na(yelp_data$rating),]
 # the restaurant label
 yelp_data$rating_sign[yelp_data$rating >= 4.5] <- "★★★★☆"
 yelp_data$rating_sign[(yelp_data$rating < 4.5) & (yelp_data$rating >= 4)] <- "★★★★"
@@ -178,7 +178,7 @@ leaflet() %>% addTiles() %>%
 
 
 ## Crime Trend Visualization 
-crime <- read.csv("../data/crime.csv", stringsAsFactors = F)
+crime <- read.csv("crime.csv", stringsAsFactors = F)
 
 
 crime18 <- crime %>%
@@ -202,7 +202,7 @@ crime_trend <- data.frame(crime_trend)
 
 
 # read police precinct data
-police <- read.csv("../data/police.csv", stringsAsFactors = F)
+police <- read.csv("police.csv", stringsAsFactors = F)
 colnames(police) <- c("id", "police.precinct.address","Latitude", "Longitude")
 
 ## The Amimated plot for Proportion of Level of Offense by hours
@@ -211,7 +211,7 @@ colnames(police) <- c("id", "police.precinct.address","Latitude", "Longitude")
 ############################# Shiny ui & server #############################
 
 ##################
-ui <- fluidPage(includeCSS("../app/www/style.css"),
+ui <- fluidPage(includeCSS("style.css"),
                 # setBackgroundImage(src = "../data/www/Homepage.png"),
                 #setBackgroundColor(color = "#DCF7FF"),
                 navbarPage(p(class="h","Foodie Safeguard", align = "center"),
@@ -225,12 +225,17 @@ ui <- fluidPage(includeCSS("../app/www/style.css"),
                                             div(h2("Select Factors:"),
                                                 dateRangeInput("date", label = h3("Date input"), start = "2018-01-01",
                                                                end = "2018-03-31",min = min_date,max = max_date),
-                                                sliderInput("timeinterval", label = h3("Select Time:"), min = 0, max = 23,
-                                                            value = c(0,23)),
+                                                selectizeInput("timeinterval",label = h3("Select Hours:"),
+                                                              choices = list('0' = 1, '1' = 2,'2' = 3,'3' = 4,'4' = 5, '5' = 6, '6' = 7, '7' = 8,
+                                                                             '8' =9, '9' = 10, '10' = 11, '11' = 12, '12' = 13, '13' = 14, '14' = 15,
+                                                                             '15' = 16, '16' = 17, '17' = 18, '18' = 19, '19' = 20, '20' = 21, 
+                                                                             '21' = 22, '22' = 23, '23' = 24), multiple = TRUE, selected = list(1,2,3,4,23,24)),
+                                                #sliderInput("timeinterval", label = h3("Select Time:"), min = 0, max = 23,
+                                                #            value = c(0,23)),
                                                 selectizeInput("boro",label = h3("Select Borough:"),
                                                                choices = list("BROOKLYN" = 1, "QUEENS" = 2,
                                                                               "BRONX" = 3, "MANHATTAN" = 4, 
-                                                                              "STATEN ISLAND" = 5), multiple = TRUE),
+                                                                              "STATEN ISLAND" = 5), multiple = TRUE, selected = list(4)),
                                                 sliderInput("res_rating", label = h3("Restaurant Rating"), min = 1.0, max = 5.0,
                                                             value = c(3.5,4.5),step = 0.5),
                                                 checkboxGroupInput("res_price", label = h3("Restaurant Price Level"),
@@ -373,11 +378,10 @@ server <- function(input, output){
                                 price %in% input$res_price) 
   })
   
-  
   output$nyc_map <- renderLeaflet({
     #the restaurant icon
     restaurantIcon <- icons(
-      iconUrl = "../app/www/icon.png",
+      iconUrl = "icon.png",
       # iconUrl = "C:\\Users\\Anke Xu\\Documents\\GitHub\\Fall2018-Project2-sec1proj2_grp7\\doc\\figs\\Restaurant.png",
       iconWidth = 25, iconHeight = 20,
       iconAnchorX = 22, iconAnchorY = 94
@@ -387,19 +391,19 @@ server <- function(input, output){
     
     
     res_popup <- paste0("<a href='",
-                        yelp_data$url,
+                        res_df()$url,
                         "' target='_blank'>",
-                        yelp_data$name,"</a>","<br>",
-                        yelp_data$address,"<br>",
-                        yelp_data$city,"\t",
-                        yelp_data$state,"\t",
-                        yelp_data$zip_code,"<br>",
+                        res_df()$name,"</a>","<br>",
+                        res_df()$address,"<br>",
+                        res_df()$city,"\t",
+                        res_df()$state,"\t",
+                        res_df()$zip_code,"<br>",
                         "Rating: ",
-                        yelp_data$rating_sign,"<br>",
+                        res_df()$rating_sign,"<br>",
                         "Price: ",
-                        yelp_data$price_sign,"<br>",
+                        res_df()$price_sign,"<br>",
                         "Crime Number in 0.5 mile radius circle: ","<br>",
-                        res_crime_count$counts, "<br>")
+                        res_df()$res_crime_count, "<br>")
     
     
     # the crime label
@@ -412,7 +416,7 @@ server <- function(input, output){
     
     #the police precinct icon
     policeIcon <- icons(
-      iconUrl = "../app/www/police_icon.png",
+      iconUrl = "police_icon.png",
       iconWidth = 25, iconHeight = 20,
       iconAnchorX = 22, iconAnchorY = 94
     ) 
@@ -421,7 +425,7 @@ server <- function(input, output){
     qpal <- colorQuantile("Blues", points_by_neighborhood$num_points, n = 5)
     pal <- colorNumeric(
       palette = "Blues",
-      domain = points_by_neighborhood$num_points
+      domain = df()$num_points
     )
     
     leaflet()%>% 
