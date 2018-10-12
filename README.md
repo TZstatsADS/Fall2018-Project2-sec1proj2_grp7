@@ -2,14 +2,10 @@
 
 ### [Project Description](/project2_desc.md)
 
-![screenshot](doc/Homepage.png)
-
-
-
 ## Project Title "Foodies Safeguard in NYC"
 Term: Fall 2018
 
-Final Version: [Project 2 by Group 7](https://mc4398.shinyapps.io/proj/)
+Final Version: [Project 2 by Group 7](https://mc4398.shinyapps.io/goooooood/)
 
 + Team #07
 
@@ -31,7 +27,7 @@ This project mainly focuses on the relation between crimes and restaurants of ye
 
 We visualize the information about restaurants and crimes using geograph, time series plot, animated bar chart and animated scatter plot using ploty package.
 And we visualize the combination of the information about restaurants and crimes on NYC map using leaflet package.
-![screenshot](doc/screenshot1.png)
+![screenshot](app/screenshot1.png)
 
 
 Our Target Users:
